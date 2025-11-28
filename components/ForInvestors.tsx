@@ -147,7 +147,7 @@ export default function ForInvestors() {
 
               {/* Hidden FormSubmit Magic */}
               <input type="hidden" name="_subject" value="New Investor Registration – BuildrHive UG" />
-              <input type="hidden" name="_next" value={`${typeof window !== 'undefined' ? window.location.origin : 'https://buildrhive.ug'}/thank-you-investor`} />
+              <input type="hidden" name="_next" value={`${typeof window !== 'undefined' ? window.location.origin : 'https://next-solution-ug.vercel.app/'}/thank-you-investor`} />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_autoresponse" value="Thank you for registering as an investor at BuildrHive UG! We'll send you our first deal flow soon. – The BuildrHive Team" />

@@ -66,7 +66,7 @@ export default function ThankYouInvestor() {
             className="inline-flex items-center gap-3 text-gray-400 hover:text-white transition"
           >
             <Mail className="w-5 h-5" />
-            investors@buildrhive.ug
+            investors@nextsolution.ug
           </a>
         </motion.div>
 
