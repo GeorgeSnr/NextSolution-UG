@@ -62,7 +62,7 @@ export default function ThankYouInvestor() {
           </Link>
 
           <a
-            href="mailto:investors@buildrhive.ug"
+            href="mailto:investors@nextsolution.ug"
             className="inline-flex items-center gap-3 text-gray-400 hover:text-white transition"
           >
             <Mail className="w-5 h-5" />

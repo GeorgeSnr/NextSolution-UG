@@ -2,12 +2,43 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp, Users, Globe, ArrowBigDown, ArrowDown } from 'lucide-react'
+import { ArrowRight, TrendingUp, Users, Globe, ArrowDown, CheckCircle2 } from 'lucide-react'
+import { useState } from 'react'
 
 export default function ForInvestors() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const response = await fetch('https://formsubmit.co/simufix@gmail.com', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        // Redirect after success
+        setTimeout(() => {
+          window.location.href = '/thank-you-investor'
+        }, 1500)
+      } else {
+        throw new Error('Submission failed')
+      }
+    } catch (error) {
+      alert('Submission failed. Please try again or email simufix@gmail.com directly.')
+      setIsSubmitting(false)
+    }
+  }
+
   return (
-    <section id="for-investors" className="py-8 px-6 bg-slate-950 relative overflow-hidden">
-      {/* Subtle ambient glows */}
+    <section id="for-investors" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
+      {/* Ambient glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-green-600/5 rounded-full blur-3xl" />
@@ -39,7 +70,7 @@ export default function ForInvestors() {
           </p>
         </motion.div>
 
-        {/* Investor Stats */}
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
           {[
             { icon: Users, value: '38+', label: 'Startups in Pipeline' },
@@ -48,14 +79,7 @@ export default function ForInvestors() {
           ].map((stat, i) => {
             const Icon = stat.icon
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="text-center"
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-yellow-500/10 to-green-600/10 flex items-center justify-center border border-white/10">
                   <Icon className="w-10 h-10 text-yellow-500" />
                 </div>
@@ -66,7 +90,7 @@ export default function ForInvestors() {
           })}
         </div>
 
-        {/* Investor Registration Form */}
+        {/* Form */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,59 +98,27 @@ export default function ForInvestors() {
           transition={{ delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <div className=" bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-3xl p-10 md:p-16">
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-3xl p-10 md:p-16">
             <h3 className="flex flex-col items-center gap-4 text-3xl md:text-4xl font-bold text-white text-center mb-10">
-  <span>Register Your Interest as an Investor</span>
-  
-  <motion.div
-    animate={{ y: [0, 10, 0] }}           // moves down 10px then back
-    transition={{
-      duration: 1.5,
-      repeat: Infinity,
-      repeatType: "loop",
-      ease: "easeInOut",
-    }}
-  >
-    <ArrowDown className="w-10 h-10 text-yellow-500" />
-  </motion.div>
-</h3>
+              <span>Register Your Interest as an Investor</span>
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowDown className="w-12 h-12 text-yellow-500" />
+              </motion.div>
+            </h3>
 
-            <form
-              action="https://formsubmit.co/simufix@gmail.com"
-              method="POST"
-              className="space-y-8"
-            >
-              {/* Row 1 */}
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Your inputs — unchanged */}
               <div className="grid md:grid-cols-2 gap-8">
-                <input
-                  type="text"
-                  name="Full Name"
-                  placeholder="Full Name"
-                  required
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition"
-                />
-                <input
-                  type="email"
-                  name="Email"
-                  placeholder="Email Address"
-                  required
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition"
-                />
+                <input type="text" name="Full Name" placeholder="Full Name" required className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition" />
+                <input type="email" name="Email" placeholder="Email Address" required className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition" />
               </div>
 
-              {/* Row 2 */}
               <div className="grid md:grid-cols-2 gap-8">
-                <input
-                  type="text"
-                  name="Organization"
-                  placeholder="Organization / Fund (if any)"
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition"
-                />
-                <select
-                  name="Investment Focus"
-                  required
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-yellow-500/50 transition"
-                >
+                <input type="text" name="Organization" placeholder="Organization / Fund (if any)" className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition" />
+                <select name="Investment Focus" required className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-yellow-500/50 transition">
                   <option value="">Investment Focus</option>
                   <option value="Angel Investor">Angel Investor</option>
                   <option value="Venture Capital">Venture Capital</option>
@@ -137,30 +129,44 @@ export default function ForInvestors() {
                 </select>
               </div>
 
-              {/* Message */}
-              <textarea
-                name="Message"
-                placeholder="Tell us about your investment thesis, check size, or sectors of interest in Uganda (optional but helpful)"
-                rows={4}
-                className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition resize-none"
-              />
+              <textarea name="Message" placeholder="Tell us about your investment thesis, check size, or sectors of interest in Uganda (optional but helpful)" rows={4} className="w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 transition resize-none" />
 
-              {/* Hidden FormSubmit Magic */}
-              <input type="hidden" name="_subject" value="New Investor Registration – BuildrHive UG" />
-              <input type="hidden" name="_next" value={`${typeof window !== 'undefined' ? window.location.origin : 'https://next-solution-ug.vercel.app/'}/thank-you-investor`} />
+              {/* Hidden fields */}
+              <input type="hidden" name="_subject" value="New Investor Registration – NextSolution UG" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_autoresponse" value="Thank you for registering as an investor at BuildrHive UG! We'll send you our first deal flow soon. – The BuildrHive Team" />
+              <input type="hidden" name="_autoresponse" value="Thank you for registering! We'll send you deal flow from Uganda's hottest startups soon. – NextSolution UG Team" />
 
-              {/* Submit Button */}
+              {/* Submit Button with States */}
               <div className="text-center">
-                <button
-                  type="submit"
-                  className="group inline-flex items-center gap-4 bg-yellow-500 text-black font-semibold text-lg px-12 py-5 rounded-full hover:bg-yellow-400 transition-all duration-300 shadow-xl hover:shadow-yellow-500/30"
-                >
-                  Join as an Investor
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition" />
-                </button>
+                {isSubmitted ? (
+                  <div className="inline-flex items-center gap-3 text-green-400 font-bold text-xl animate-pulse">
+                    <CheckCircle2 className="w-8 h-8" />
+                    Success! Redirecting...
+                  </div>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group inline-flex items-center gap-4 bg-yellow-500 text-black font-semibold text-lg px-12 py-5 rounded-full hover:bg-yellow-400 transition-all duration-300 shadow-xl hover:shadow-yellow-500/30 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="animate-pulse">Submitting...</span>
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="w-6 h-6 border-4 border-black border-t-transparent rounded-full"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        Join as an Investor
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition" />
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
             </form>
 
@@ -170,7 +176,6 @@ export default function ForInvestors() {
           </div>
         </motion.div>
 
-        {/* Trust Footer */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
