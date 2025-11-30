@@ -26,7 +26,7 @@ export default function ForInvestors() {
         // Redirect after success
         setTimeout(() => {
           window.location.href = '/thank-you-investor'
-        }, 1500)
+        }, 1000)
       } else {
         throw new Error('Submission failed')
       }
