@@ -39,7 +39,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 mt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 mt-20">
       <div className="absolute inset-0 bg-grid-white/5" />
       <div className="absolute top-20 left-20 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-red-600/10 rounded-full blur-3xl" />
@@ -67,7 +67,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             We Build Your MVP
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 inline-block">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400 inline-block">
               {displayText}
               <motion.span
                 animate={{ opacity: [1, 0] }}

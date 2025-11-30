@@ -1,12 +1,18 @@
-// next.config.ts
-import type { NextConfig } from 'next'
+import type { NextConfig } from "next";
 
-// ...existing code...
-const nextConfig = {
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
-} as NextConfig
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 
-// ...existing code...
+  // Uncomment these only if you intentionally want to ignore errors
+  // eslint: { ignoreDuringBuilds: true },
+  // typescript: { ignoreBuildErrors: true },
+};
 
-export default nextConfig
+export default nextConfig;

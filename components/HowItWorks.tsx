@@ -2,7 +2,6 @@
 
 "use client"
 import { motion } from 'framer-motion'
-import { CheckCircle2 } from 'lucide-react'
 
 const steps = [
   { title: "Apply with your idea", desc: "3-minute form. Tell us your vision and why Uganda needs it." },

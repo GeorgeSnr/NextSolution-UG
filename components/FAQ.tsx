@@ -90,7 +90,7 @@ export default function FAQ() {
                   animate={{ rotate: openIndex === i ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown className="w-6 h-6 text-yellow-500 flex-shrink-0" />
+                  <ChevronDown className="w-6 h-6 text-yellow-500 shrink-0" />
                 </motion.div>
               </button>
 

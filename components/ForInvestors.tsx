@@ -32,6 +32,7 @@ export default function ForInvestors() {
       }
     } catch (error) {
       alert('Submission failed. Please try again or email simufix@gmail.com directly.')
+      console.log(error)
       setIsSubmitting(false)
     }
   }
@@ -60,7 +61,7 @@ export default function ForInvestors() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             Invest in the Next
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-green-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-green-500">
               Ugandan Unicorn
             </span>
           </h2>
@@ -80,7 +81,7 @@ export default function ForInvestors() {
             const Icon = stat.icon
             return (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-yellow-500/10 to-green-600/10 flex items-center justify-center border border-white/10">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-linear-to-br from-yellow-500/10 to-green-600/10 flex items-center justify-center border border-white/10">
                   <Icon className="w-10 h-10 text-yellow-500" />
                 </div>
                 <div className="text-5xl md:text-6xl font-black text-white mb-2">{stat.value}</div>

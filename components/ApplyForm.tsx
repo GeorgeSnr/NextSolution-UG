@@ -40,7 +40,7 @@ export default function ApplyForm() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             Your MVP.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400">
               Built for Free.
             </span>
           </h2>

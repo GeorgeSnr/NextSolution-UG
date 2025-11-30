@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Globe } from 'lucide-react'
+import Image from 'next/image'
 
 const partners = [
   {
@@ -112,7 +113,7 @@ export default function InvestorNetwork() {
               className="group relative bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center hover:border-yellow-500/30 hover:bg-slate-900/80 transition-all duration-500"
             >
               <div className="w-32 h-20 mb-4 relative flex items-center justify-center">
-                <img
+                <Image width={80} height={80}
                   src={partner.logo}
                   alt={`${partner.name} logo`}
                   className="max-w-full max-h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"

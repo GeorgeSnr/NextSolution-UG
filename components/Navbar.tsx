@@ -140,8 +140,8 @@ export default function Navbar() {
                             href="#for-investors"
                             onClick={(e) => scrollToSection(e, '#for-investors')}
                             className={`px-8 py-3 rounded-full font-medium transition-all shadow-lg ${activeSection === 'for-investors'
-                                    ? 'bg-white/10 text-white border border-white/20'
-                                    : 'bg-yellow-500 text-black hover:bg-yellow-400'
+                                ? 'bg-white/10 text-white border border-white/20'
+                                : 'bg-yellow-500 text-black hover:bg-yellow-400'
                                 }`}
                         >
                             Invest in Uganda’s Future

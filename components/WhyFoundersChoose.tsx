@@ -58,7 +58,7 @@ export default function WhyChoose() {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             Why Founders
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400">
               Choose NextSolution UG
             </span>
           </h2>
@@ -82,7 +82,7 @@ export default function WhyChoose() {
                 transition={{ delay: i * 0.15 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-yellow-500/10 to-transparent flex items-center justify-center border border-white/10">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-linear-to-br from-yellow-500/10 to-transparent flex items-center justify-center border border-white/10">
                   <Icon className="w-10 h-10 text-yellow-500" />
                 </div>
                 <div className="text-6xl md:text-7xl font-black text-white mb-3">
